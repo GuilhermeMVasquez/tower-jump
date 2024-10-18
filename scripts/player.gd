@@ -4,10 +4,10 @@ extends CharacterBody2D
 const SPEED = 250.0
 const JUMP_VELOCITY = -350.0
 
-const MIN_POWER: float = 0.75
-const MAX_POWER: float = 2.0
+const MIN_POWER: float = 0.6
+const MAX_POWER: float = 2
 
-const HORIZONTAL_MULTIPLIER: float = 1.25
+const HORIZONTAL_MULTIPLIER: float = 1.15
 
 @onready var animated_sprite = $AnimatedSprite2D
 
