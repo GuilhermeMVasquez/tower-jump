@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	flip_sprite(direction)	
 
 	if state == State.READY:
-		process_ready(delta, direction)
+		process_ready(direction)
 
 	if state == State.CHARGE:
 		process_charge(delta, direction)
@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func process_ready(delta, direction: float) -> void:
+func process_ready(direction: float) -> void:
 	if not is_on_floor():
 		state = State.FALL
 	else:
