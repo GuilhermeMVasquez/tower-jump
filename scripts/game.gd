@@ -1,9 +1,10 @@
 extends Node2D
 
 var hud: CanvasLayer
-var player : CharacterBody2D
+var player: CharacterBody2D
 var level = null
 
+signal set_time(ftime)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,3 +27,10 @@ func _process(delta: float) -> void:
 
 func _on_objective_reached() -> void:
 	hud.stop()
+	var packed = load("res://scenes/credits.tscn")
+	var scene = packed.instantiate()
+	scene.connect_signal(set_time)
+	set_time.emit(hud.get_time_formatted())
+	var p2 = PackedScene.new()
+	p2.pack(scene)
+	get_tree().change_scene_to_packed(p2)
