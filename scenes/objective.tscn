@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ocsj6j4li17d"]
+
+[ext_resource type="Texture2D" uid="uid://clys1sp13pxpa" path="res://sprites/loki.png" id="1_boikm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hmqp"]
+size = Vector2(516, 826)
+
+[node name="Objective" type="Area2D"]
+
+[node name="Loki" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.939, 1)
+texture = ExtResource("1_boikm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(46, 75)
+shape = SubResource("RectangleShape2D_0hmqp")
