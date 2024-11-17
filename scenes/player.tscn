@@ -1,7 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cad7l7rd6yx"]
+[gd_scene load_steps=19 format=3 uid="uid://cad7l7rd6yx"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_040hf"]
 [ext_resource type="Texture2D" uid="uid://dksp18wvrehyf" path="res://sprites/pixilart-sprite.png" id="1_amsf1"]
+[ext_resource type="AudioStream" uid="uid://kjhi4s77mntt" path="res://sfx/jump-sfx.mp3" id="3_a1558"]
+[ext_resource type="AudioStream" uid="uid://fbb7eaymte28" path="res://sfx/punch-sfx.mp3" id="4_roi2f"]
+[ext_resource type="AudioStream" uid="uid://dlcx1t17oetpx" path="res://sfx/wall-jump-sfx.mp3" id="5_5hkue"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xe57w"]
 atlas = ExtResource("1_amsf1")
@@ -125,7 +128,16 @@ frame_progress = 1.0
 shape = SubResource("RectangleShape2D_i2wtf")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
-
-[node name="FallSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_a1558")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="WallJumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5hkue")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="PunchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_roi2f")
+volume_db = -15.0
+bus = &"SFX"

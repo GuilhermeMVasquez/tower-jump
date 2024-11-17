@@ -10,14 +10,18 @@ const HORIZONTAL_MULTIPLIER: float = 1.15
 const BOUNCE_MULTIPLIER: float = 0.75
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var jump_sound = $JumpSound
+@onready var punch_sound = $PunchSound
+@onready var wall_jump_sound = $WallJumpSound
 
 enum State {READY, CHARGE, JUMP, FALL}
 var state: State = get_starter_state()
 
 var jump_power: float
+var sound_playing: bool = false
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	var direction: float = 0
 	if not state in [State.JUMP, State.FALL]:
 		direction = get_direction()
@@ -42,7 +46,8 @@ func process_ready(direction: float) -> void:
 	else:
 		if animated_sprite.animation == "jump":
 			animated_sprite.play("land")
-					
+			punch_sound.play()
+				
 		var is_land_animation: bool = animated_sprite.animation == "land"
 		if !is_land_animation or (is_land_animation and !animated_sprite.is_playing()):
 			if direction == 0:
@@ -106,6 +111,7 @@ func handle_bounce() -> void:
 		
 	flip_sprite(new_direction)
 	velocity.x = new_direction * SPEED * BOUNCE_MULTIPLIER
+	wall_jump_sound.play()
 
 func context_charge() -> void:
 	velocity = Vector2.ZERO
@@ -116,3 +122,4 @@ func context_jump(direction: float) -> void:
 	velocity.y = clamp(jump_power, MIN_POWER, MAX_POWER) * JUMP_VELOCITY
 	velocity.x = direction * SPEED * HORIZONTAL_MULTIPLIER
 	state = State.JUMP
+	jump_sound.play()
