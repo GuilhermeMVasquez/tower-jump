@@ -123,3 +123,9 @@ frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i2wtf")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+
+[node name="FallSound" type="AudioStreamPlayer" parent="."]
+
+[node name="WallJumpSound" type="AudioStreamPlayer" parent="."]

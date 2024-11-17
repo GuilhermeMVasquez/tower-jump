@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1ubtaj6cba51"]
+[gd_scene load_steps=8 format=3 uid="uid://c1ubtaj6cba51"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_lds0p"]
 [ext_resource type="Texture2D" uid="uid://bxbo2sadfcbpl" path="res://assets/2.png" id="1_of8a8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djoedlxcmdwy4" path="res://assets/Hulk-Tower-Jump.png" id="1_vxlkp"]
 [ext_resource type="Texture2D" uid="uid://cnai7rs2u5tfc" path="res://assets/3.png" id="2_7dmwc"]
 [ext_resource type="Texture2D" uid="uid://bintegfi0jols" path="res://assets/5.png" id="3_g18xb"]
+[ext_resource type="AudioStream" uid="uid://dn2k57r7lougy" path="res://sfx/Marvel’s Avengers Main Menu Theme Music.mp3" id="7_mj0uy"]
 
 [node name="Menu" type="Node"]
 script = ExtResource("1_lds0p")
@@ -90,5 +91,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Start"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_mj0uy")
+volume_db = 10.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
