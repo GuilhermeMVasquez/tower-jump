@@ -1,0 +1,41 @@
+extends Area2D
+
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var timer = $Timer
+
+@export var portal_on: bool = false
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func open_portal(pos: Vector2) -> void:
+	if portal_on:
+		await close_portal()
+	position = pos
+	animated_sprite.play("open")
+	await animated_sprite.animation_finished
+	portal_on = true
+	animated_sprite.play("idle")
+
+
+func close_portal() -> void:
+	portal_on = false
+	animated_sprite.play("close")
+	await animated_sprite.animation_finished
+
+
+func recharge() -> void:
+	portal_on = false
+	timer.start()
+	
+
+func _on_timer_timeout() -> void:
+	portal_on = true

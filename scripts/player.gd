@@ -95,7 +95,7 @@ func get_starter_state() -> State:
 
 func get_direction() -> float:
 	return Input.get_axis("move_left", "move_right")
-	
+
 func flip_sprite(direction: float) -> void:
 	if direction > 0:
 		animated_sprite.flip_h = true
