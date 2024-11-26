@@ -125,7 +125,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"close",
-"speed": 14.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -204,8 +204,10 @@ script = ExtResource("1_aqioq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vm4hk")
-animation = &"idle"
+animation = &"close"
 autoplay = "closed"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

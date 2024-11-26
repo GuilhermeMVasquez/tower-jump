@@ -14,6 +14,10 @@ script = ExtResource("1_xq145")
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
+[node name="Player" parent="." instance=ExtResource("2_55po3")]
+position = Vector2(118, -101)
+scale = Vector2(3, 3)
+
 [node name="Portals" type="Node2D" parent="."]
 
 [node name="Portal1" parent="Portals" instance=ExtResource("6_gjglv")]
@@ -24,10 +28,6 @@ scale = Vector2(2.5, 2.5)
 z_index = 3
 position = Vector2(-83.9999, -270)
 scale = Vector2(2.5, 2.5)
-
-[node name="Player" parent="." instance=ExtResource("2_55po3")]
-position = Vector2(118, -101)
-scale = Vector2(3, 3)
 
 [node name="Level" parent="." instance=ExtResource("1_e20f7")]
 

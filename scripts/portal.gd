@@ -16,20 +16,17 @@ func _process(delta: float) -> void:
 	pass
 
 
-func open_portal(pos: Vector2) -> void:
+func open_portal(pos: Vector2, player_pos: Vector2) -> void:
 	if portal_on:
-		await close_portal()
+		portal_on = false
+		animated_sprite.play("close")
+		await animated_sprite.animation_finished
+	animated_sprite.flip_h = (player_pos.x - pos.x) > 0
 	position = pos
 	animated_sprite.play("open")
 	await animated_sprite.animation_finished
 	portal_on = true
 	animated_sprite.play("idle")
-
-
-func close_portal() -> void:
-	portal_on = false
-	animated_sprite.play("close")
-	await animated_sprite.animation_finished
 
 
 func recharge() -> void:
