@@ -122,7 +122,6 @@ size = Vector2(12, 28)
 script = ExtResource("1_040hf")
 
 [node name="Line2D" type="Line2D" parent="."]
-texture_repeat = 2
 width = 5.0
 width_curve = SubResource("Curve_1v60f")
 
