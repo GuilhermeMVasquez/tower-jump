@@ -2,6 +2,9 @@ extends Area2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var timer = $Timer
+@onready var open_sound = $OpenSound
+@onready var teleport_sound = $TeleportSound
+@onready var close_sound = $CloseSound
 
 @export var portal_on: bool = false
 
@@ -19,10 +22,12 @@ func _process(delta: float) -> void:
 func open_portal(pos: Vector2, player_pos: Vector2) -> void:
 	if portal_on:
 		portal_on = false
+		close_sound.play()
 		animated_sprite.play("close")
 		await animated_sprite.animation_finished
 	animated_sprite.flip_h = (player_pos.x - pos.x) > 0
 	position = pos
+	open_sound.play()
 	animated_sprite.play("open")
 	await animated_sprite.animation_finished
 	portal_on = true
@@ -30,6 +35,7 @@ func open_portal(pos: Vector2, player_pos: Vector2) -> void:
 
 
 func recharge() -> void:
+	teleport_sound.play()
 	portal_on = false
 	timer.start()
 	

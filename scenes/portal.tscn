@@ -1,7 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://dib0veoodkdv"]
+[gd_scene load_steps=32 format=3 uid="uid://dib0veoodkdv"]
 
 [ext_resource type="Texture2D" uid="uid://syk5n3p5vtsw" path="res://sprites/Green Portal Sprite Sheet.png" id="1_5ckst"]
 [ext_resource type="Script" path="res://scripts/portal.gd" id="1_aqioq"]
+[ext_resource type="AudioStream" uid="uid://c5ta8cixxusab" path="res://sfx/portal-open.mp3" id="3_fil0w"]
+[ext_resource type="AudioStream" uid="uid://i7i6vie41hbv" path="res://sfx/portal-teleport.mp3" id="4_wq5kx"]
+[ext_resource type="AudioStream" uid="uid://digjhwj3usyuj" path="res://sfx/portal-close.mp3" id="5_4kd0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ermur"]
 atlas = ExtResource("1_5ckst")
@@ -204,15 +207,28 @@ script = ExtResource("1_aqioq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vm4hk")
-animation = &"close"
+animation = &"idle"
 autoplay = "closed"
-frame = 6
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_yw613")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fil0w")
+volume_db = -12.0
+bus = &"SFX"
+
+[node name="TeleportSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wq5kx")
+volume_db = -12.0
+bus = &"SFX"
+
+[node name="CloseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4kd0a")
+volume_db = -15.0
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
