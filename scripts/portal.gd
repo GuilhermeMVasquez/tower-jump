@@ -8,6 +8,7 @@ extends Area2D
 
 @export var portal_on: bool = false
 
+var force_close: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 
 
 func open_portal(pos: Vector2, player_pos: Vector2) -> void:
+	force_close = false
 	if portal_on:
 		portal_on = false
 		close_sound.play()
@@ -32,6 +34,11 @@ func open_portal(pos: Vector2, player_pos: Vector2) -> void:
 	await animated_sprite.animation_finished
 	portal_on = true
 	animated_sprite.play("idle")
+	if force_close:
+		portal_on = false
+		close_sound.play()
+		animated_sprite.play("close")
+		await animated_sprite.animation_finished
 
 
 func recharge() -> void:
@@ -42,3 +49,9 @@ func recharge() -> void:
 
 func _on_timer_timeout() -> void:
 	portal_on = true
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == "NoPortalArea":
+		force_close = true
+		

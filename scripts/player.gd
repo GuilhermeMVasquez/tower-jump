@@ -151,7 +151,7 @@ func handle_aim_line() -> void:
 		line.add_point(pos)
 		line.add_point(mouse_now)
 		line.visible = true
-		if Input.is_action_pressed("left_click"):
+		if Input.is_action_just_pressed("left_click"):
 			open_portal_1.emit()
-		elif Input.is_action_pressed("right_click"):
+		elif Input.is_action_just_pressed("right_click"):
 			open_portal_2.emit()
