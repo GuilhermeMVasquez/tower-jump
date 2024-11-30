@@ -15,7 +15,7 @@ scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_55po3")]
-position = Vector2(118, -101)
+position = Vector2(115, -94)
 scale = Vector2(3, 3)
 
 [node name="Portals" type="Node2D" parent="."]
